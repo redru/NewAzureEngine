@@ -11,7 +11,7 @@
 # Compiled Dynamic libraries
 *.so
 *.dylib
-*.dll
+# *.dll
 
 # Fortran module files
 *.mod
@@ -21,9 +21,18 @@
 *.lai
 *.la
 *.a
-*.lib
+# *.lib
+
+# Build
+Debug/
+azure-engine/Debug/
+engine-tester/Debug/
 
 # Executables
 *.exe
 *.out
 *.app
+
+# Local DB's
+*.VC.db
+*.VC.VC.opendb
