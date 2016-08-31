@@ -16,14 +16,29 @@
     <Filter Include="Source Files\core">
       <UniqueIdentifier>{d0ec9daa-3b85-40bc-a566-1a5b72f032a1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\modules">
+      <UniqueIdentifier>{823bacfd-1af5-4c89-a15d-6bd3127ea276}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\core\Engine.cpp">
       <Filter>Source Files\core</Filter>
     </ClCompile>
+    <ClCompile Include="src\modules\GraphicsModule.cpp">
+      <Filter>Source Files\modules</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\ModuleSystem.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="headers\Engine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\ModuleSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\GraphicsModule.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

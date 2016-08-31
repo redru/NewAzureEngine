@@ -1,6 +1,9 @@
 #pragma once
 #include <iostream>
 
+#include <GL\glew.h>
+#include <GLFW\glfw3.h>
+
 namespace azr {
 	
 	class __declspec(dllexport) Engine {
@@ -13,6 +16,7 @@ namespace azr {
 		}
 
 		void saySomething();
+		int initialize();
 
 	private:
 		azr::Engine() {};

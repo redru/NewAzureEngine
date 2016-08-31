@@ -87,14 +87,15 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;AZUREENGINE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;AZUREENGINE_EXPORTS;GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(ProjectDir)include;$(ProjectDir)headers</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;opengl32.lib;glew32s.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)libs</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -149,9 +150,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\core\Engine.cpp" />
+    <ClCompile Include="src\core\ModuleSystem.cpp" />
+    <ClCompile Include="src\modules\GraphicsModule.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="headers\Engine.h" />
+    <ClInclude Include="headers\GraphicsModule.h" />
+    <ClInclude Include="headers\ModuleSystem.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

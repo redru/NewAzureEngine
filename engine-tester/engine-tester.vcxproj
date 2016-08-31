@@ -89,7 +89,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)include;$(ProjectDir)headers;$(SolutionDir)azure-engine\headers</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;$(ProjectDir)headers;$(SolutionDir)azure-engine\headers;$(SolutionDir)azure-engine\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
