@@ -1,43 +1,30 @@
 #include "Engine.h"
 
-void azr::Engine::saySomething() {
-	std::cout << "Say something! Hello!" << std::endl;
-}
-
 int azr::Engine::initialize() {
-	GLFWwindow* window;
 
-	/* Initialize the library */
-	if (!glfwInit()) {
-		return -1;
-	}
+	std::thread GRAPHICS_THREAD([&]() {
+		graphics.initialize(configuration.getFps(), configuration.getTitle());
+	});
 
-	/* Create a windowed mode window and its OpenGL context */
-	window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
-	if (!window) {
-		glfwTerminate();
-		return -1;
-	}
+	std::thread GAMEPLAY_THREAD([&]() {
+		bool exit = false;
+		std::string command;
 
-	/* Make the window's context current */
-	glfwMakeContextCurrent(window);
+		while (!exit) {
+			std::cout << "system> ";
+			std::cin >> command;
 
-	if (glewInit()) {
-		return -1;
-	}
+			if (command.compare("exit") == 0) {
+				graphics.close();
+				exit = true;
+			} else if (command.compare("conf") == 0) {
+				std::cout << "FPS: " + std::to_string(configuration.getFps()) << "\nTitle: " + configuration.getTitle() << std::endl;
+			}
+		}
+	});
 
-	/* Loop until the user closes the window */
-	while (!glfwWindowShouldClose(window)) {
-		/* Render here */
-		glClear(GL_COLOR_BUFFER_BIT);
+	GRAPHICS_THREAD.join();
+	GAMEPLAY_THREAD.join();
 
-		/* Swap front and back buffers */
-		glfwSwapBuffers(window);
-
-		/* Poll for and process events */
-		glfwPollEvents();
-	}
-
-	glfwTerminate();
 	return 0;
 }
