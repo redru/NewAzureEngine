@@ -41,5 +41,8 @@
     <ClInclude Include="headers\GraphicsModule.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="headers\Console.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

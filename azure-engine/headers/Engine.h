@@ -2,7 +2,9 @@
 #include <string>
 #include <iostream>
 #include <thread>
+#include <chrono>
 
+#include "Console.h"
 #include "GraphicsModule.h"
 
 namespace azr {
@@ -33,7 +35,7 @@ namespace azr {
 			return instance;
 		};
 
-		int initialize();
+		int start();
 
 	private:
 		// Private constructor for singleton

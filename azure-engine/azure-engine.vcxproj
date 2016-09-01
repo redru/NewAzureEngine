@@ -154,6 +154,7 @@
     <ClCompile Include="src\modules\GraphicsModule.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="headers\Console.h" />
     <ClInclude Include="headers\Engine.h" />
     <ClInclude Include="headers\GraphicsModule.h" />
     <ClInclude Include="headers\ModuleSystem.h" />

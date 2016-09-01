@@ -3,12 +3,12 @@
 #include "Engine.h"
 
 int main() {
-	azr::EngineConfiguration configuration(60, "New Azure Engine...");
+	azr::EngineConfiguration configuration(60, "AZURE ENGINE TEST");
 
 	azr::Engine& engine(azr::Engine::getInstance());
 
 	engine.setConfiguration(configuration);
-	engine.initialize();
+	engine.start();
 
 	return 0;
 }
