@@ -1,18 +1,13 @@
 #include "GraphicsModule.h"
 
-int GraphicsModule::initialize(int fps, std::string title) {
-	this->fps = fps;
-	this->title = title;
-
-	GLFWwindow* window;
-
+int azr::GraphicsModule::initialize() {
 	/* Initialize the library */
 	if (!glfwInit()) {
 		return -1;
 	}
 
 	/* Create a windowed mode window and its OpenGL context */
-	window = glfwCreateWindow(640, 480, title.c_str(), NULL, NULL);
+	window = glfwCreateWindow(_configuration.getResolution().getWidth(), _configuration.getResolution().getHeight(), _configuration.getTitle().c_str(), NULL, NULL);
 	if (!window) {
 		glfwTerminate();
 		return -1;
@@ -43,6 +38,6 @@ int GraphicsModule::initialize(int fps, std::string title) {
 	return 0;
 }
 
-void GraphicsModule::close() {
+void azr::GraphicsModule::close() {
 	exit = true;
 }

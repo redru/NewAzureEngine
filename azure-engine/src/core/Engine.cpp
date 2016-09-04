@@ -4,7 +4,8 @@ int azr::Engine::start() {
 	bool exit = false;
 
 	std::thread GRAPHICS_THREAD([&]() {
-		graphics.initialize(configuration.getFps(), configuration.getTitle());
+		_graphics.setConfiguration(_configuration);
+		_graphics.initialize();
 	});
 
 	std::thread GAMEPLAY_THREAD([&]() {
@@ -31,11 +32,12 @@ int azr::Engine::start() {
 			std::getline(std::cin, command);
 
 			if (command.compare("shutdown") == 0) {
-				graphics.close();
+				_graphics.close();
 				exit = true;
 			} else if (command.compare("engine conf") == 0) {
-				Console::println("FPS: " + std::to_string(configuration.getFps()), 3);
-				Console::println("Title: " + configuration.getTitle(), 3);
+				Console::println("[FPS] " + std::to_string(_configuration.getFps()), 3, false);
+				Console::println("[Title] " + _configuration.getTitle(), 3, false);
+				Console::println("[Resolution] " + std::to_string(_configuration.getResolution().getWidth()) + "x" + std::to_string(_configuration.getResolution().getHeight()), 3, false);
 			} else {
 				Console::println("'" + command + "' not recognized as a command", 5);
 			}

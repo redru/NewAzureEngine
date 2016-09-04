@@ -19,6 +19,9 @@
     <Filter Include="Source Files\modules">
       <UniqueIdentifier>{823bacfd-1af5-4c89-a15d-6bd3127ea276}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\logging">
+      <UniqueIdentifier>{3af0aa80-6c55-41f5-8e71-269a5664cd29}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\core\Engine.cpp">
@@ -29,6 +32,9 @@
     </ClCompile>
     <ClCompile Include="src\core\ModuleSystem.cpp">
       <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\logging\Console.cpp">
+      <Filter>Source Files\logging</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -42,6 +48,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="headers\Console.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\EngineEntities.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

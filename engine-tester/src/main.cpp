@@ -3,7 +3,10 @@
 #include "Engine.h"
 
 int main() {
-	azr::EngineConfiguration configuration(60, "AZURE ENGINE TEST");
+	azr::EngineConfiguration configuration;
+	configuration.setFps(60);
+	configuration.setTitle("AZURE ENGINE TEST");
+	configuration.setResolution(azr::EngineResolution(720, 720));
 
 	azr::Engine& engine(azr::Engine::getInstance());
 

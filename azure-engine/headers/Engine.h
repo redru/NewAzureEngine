@@ -4,52 +4,36 @@
 #include <thread>
 #include <chrono>
 
+#include "EngineEntities.h"
 #include "Console.h"
 #include "GraphicsModule.h"
 
 namespace azr {
-
-	class __declspec(dllexport) EngineConfiguration {
-
-	public:
-		azr::EngineConfiguration(int fps = 30, std::string title = "NO_TITLE") : fps(fps), title(title) {};
-
-		inline void setFps(int fps) { this->fps = fps; };
-		inline int getFps() { return fps; };
-
-		inline void setTitle(std::string title) { this->title = title; };
-		inline std::string getTitle() { return title; };
-
-	private:
-		int fps;
-		std::string title;
-
-	};
 	
 	class __declspec(dllexport) Engine {
 
 	public:
 		// Singleton
 		static azr::Engine& getInstance() {
-			static Engine instance;
-			return instance;
+			static Engine _instance;
+			return _instance;
 		};
 
 		int start();
 
 	private:
 		// Private constructor for singleton
-		azr::Engine() {};
+		azr::Engine() : _configuration(azr::EngineConfiguration()), _graphics(azr::GraphicsModule()) { };
 
 		// Engine configuration object
-		azr::EngineConfiguration configuration;
+		azr::EngineConfiguration _configuration;
 
 		// TMP
-		GraphicsModule graphics;
+		azr::GraphicsModule _graphics;
 
 	public:
-		inline void setConfiguration(const azr::EngineConfiguration& configuration) { this->configuration = configuration; };
-		inline const azr::EngineConfiguration& getConfiguration() { return configuration; };
+		inline void setConfiguration(azr::EngineConfiguration configuration) { _configuration = configuration; };
+		inline const azr::EngineConfiguration& getConfiguration() { return _configuration; };
 
 	};
 

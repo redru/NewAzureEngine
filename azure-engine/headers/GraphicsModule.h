@@ -5,16 +5,29 @@
 #include <GL\glew.h>
 #include <GLFW\glfw3.h>
 
-class GraphicsModule {
+#include "EngineEntities.h"
 
-public:
-	int initialize(int fps, std::string title);
-	void close();
+namespace azr {
 
-private:
-	int fps = 30;
-	std::string title = "NO_TITLE";
+	class GraphicsModule {
 
-	bool exit = false;
+	public:
+		azr::GraphicsModule() { };
 
-};
+		int initialize();
+		void close();
+
+	private:
+		GLFWwindow* window;
+
+		azr::EngineConfiguration _configuration;
+
+		bool exit = false;
+
+	public:
+		inline void setConfiguration(const azr::EngineConfiguration& configuration) { _configuration = configuration; };
+		inline const azr::EngineConfiguration& getConfiguration() { return _configuration; };
+
+	};
+
+}
