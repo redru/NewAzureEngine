@@ -23,7 +23,7 @@ namespace azr {
 
 	private:
 		// Private constructor for singleton
-		azr::Engine() : _configuration(azr::EngineConfiguration()), _graphics(azr::GraphicsModule()) { };
+		azr::Engine() : _configuration(), _graphics() { };
 
 		// Engine configuration object
 		azr::EngineConfiguration _configuration;
@@ -32,8 +32,8 @@ namespace azr {
 		azr::GraphicsModule _graphics;
 
 	public:
-		inline void setConfiguration(azr::EngineConfiguration configuration) { _configuration = configuration; };
-		inline const azr::EngineConfiguration& getConfiguration() { return _configuration; };
+		inline void setConfiguration(azr::EngineConfiguration&& configuration) { _configuration = configuration; };
+		inline azr::EngineConfiguration& getConfiguration() { return _configuration; };
 
 	};
 

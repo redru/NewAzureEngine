@@ -5,7 +5,8 @@ int azr::Engine::start() {
 
 	std::thread GRAPHICS_THREAD([&]() {
 		_graphics.setConfiguration(_configuration);
-		_graphics.initialize();
+		_graphics.startup();
+		_graphics.run();
 	});
 
 	std::thread GAMEPLAY_THREAD([&]() {
@@ -14,8 +15,6 @@ int azr::Engine::start() {
 
 		while (!exit) {
 			start = std::chrono::high_resolution_clock::now();
-
-			//TODO Gameplay loop
 
 			while (std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count() / 1000000 <= 50) {
 				end = std::chrono::high_resolution_clock::now();
@@ -32,7 +31,7 @@ int azr::Engine::start() {
 			std::getline(std::cin, command);
 
 			if (command.compare("shutdown") == 0) {
-				_graphics.close();
+				_graphics.shutdown();
 				exit = true;
 			} else if (command.compare("engine conf") == 0) {
 				Console::println("[FPS] " + std::to_string(_configuration.getFps()), 3, false);

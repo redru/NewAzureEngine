@@ -30,18 +30,15 @@
     <ClCompile Include="src\modules\GraphicsModule.cpp">
       <Filter>Source Files\modules</Filter>
     </ClCompile>
-    <ClCompile Include="src\core\ModuleSystem.cpp">
-      <Filter>Source Files\core</Filter>
-    </ClCompile>
     <ClCompile Include="src\logging\Console.cpp">
       <Filter>Source Files\logging</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\EngineEntities.cpp">
+      <Filter>Source Files\core</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="headers\Engine.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="headers\ModuleSystem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="headers\GraphicsModule.h">

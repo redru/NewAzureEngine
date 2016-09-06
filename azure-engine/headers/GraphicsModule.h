@@ -1,4 +1,6 @@
 #pragma once
+#include <stdio.h>
+#include <assert.h>
 #include <string>
 #include <iostream>
 
@@ -12,21 +14,28 @@ namespace azr {
 	class GraphicsModule {
 
 	public:
-		azr::GraphicsModule() { };
+		azr::GraphicsModule() : _exit(false), _pause(false) { };
 
-		int initialize();
-		void close();
+		/* Startup function */
+		int startup();
+
+		/* Shutdown function */
+		void shutdown();
+
+		void run();
 
 	private:
-		GLFWwindow* window;
+		bool _exit, _pause;
 
+		GLFWwindow* window;
 		azr::EngineConfiguration _configuration;
 
-		bool exit = false;
-
 	public:
-		inline void setConfiguration(const azr::EngineConfiguration& configuration) { _configuration = configuration; };
-		inline const azr::EngineConfiguration& getConfiguration() { return _configuration; };
+		inline void setConfiguration(azr::EngineConfiguration& configuration) { _configuration = configuration; };
+		inline azr::EngineConfiguration& getConfiguration() { return _configuration; };
+
+		inline void setPause(bool& pause) { _pause = pause; };
+		inline bool& isPaused() { return _pause; };
 
 	};
 

@@ -1,43 +1,50 @@
 #include "GraphicsModule.h"
 
-int azr::GraphicsModule::initialize() {
+int azr::GraphicsModule::startup() {
+
 	/* Initialize the library */
-	if (!glfwInit()) {
-		return -1;
-	}
+	int glfwInitResult = glfwInit();
+	assert(glfwInitResult != 0);
 
 	/* Create a windowed mode window and its OpenGL context */
 	window = glfwCreateWindow(_configuration.getResolution().getWidth(), _configuration.getResolution().getHeight(), _configuration.getTitle().c_str(), NULL, NULL);
-	if (!window) {
-		glfwTerminate();
-		return -1;
-	}
+	assert(window != NULL);
 
 	/* Make the window's context current */
 	glfwMakeContextCurrent(window);
 
-	if (glewInit()) {
-		return -1;
-	}
+	GLenum glewInitResult = glewInit();
+	assert(glewInitResult == 0);
 
-	glClearColor(0.0f, 0.0f, 1.0f, 1.0f);
+	azr::Color clearColor(_configuration.getClearColor());
 
-	/* Loop until the user closes the window */
-	while (!glfwWindowShouldClose(window) && !exit) {
-		/* Render here */
-		glClear(GL_COLOR_BUFFER_BIT);
+	glClearColor(clearColor.getColor(0xFF), clearColor.getColor(0xFF00), clearColor.getColor(0xFF0000), clearColor.getColor(0xFF000000));
 
-		/* Swap front and back buffers */
-		glfwSwapBuffers(window);
-
-		/* Poll for and process events */
-		glfwPollEvents();
-	}
-
-	glfwTerminate();
 	return 0;
 }
 
-void azr::GraphicsModule::close() {
-	exit = true;
+void azr::GraphicsModule::shutdown() {
+	_exit = true;
+}
+
+void azr::GraphicsModule::run() {
+
+	/* Loop until the user closes the window */
+	while (!glfwWindowShouldClose(window) && !_exit) {
+
+		if (!_pause) {
+			/* Render here */
+			glClear(GL_COLOR_BUFFER_BIT);
+
+			/* Swap front and back buffers */
+			glfwSwapBuffers(window);
+		}
+
+		/* Poll for and process events */
+		glfwPollEvents();
+
+	}
+
+	glfwTerminate();
+
 }

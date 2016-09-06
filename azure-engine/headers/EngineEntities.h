@@ -1,4 +1,6 @@
 #pragma once
+#include <stdio.h>
+#include <assert.h>
 #include <iostream>
 #include <string>
 
@@ -21,6 +23,27 @@ namespace azr {
 
 	};
 
+	class __declspec(dllexport) Color {
+	
+	public:
+		azr::Color() : _rgba(0x00000000) { };
+		azr::Color(int red, int green, int blue, int alpha) : _rgba(0x00000000) {
+			setColor(red, green, blue, alpha);
+		};
+
+		void setColor(int red, int green, int blue, int alpha);
+		unsigned int getColor(int color);
+
+		/*static const int RED;
+		static const int GREEN;
+		static const int BLUE;
+		static const int ALPHA;*/
+
+	private:
+		unsigned int _rgba;
+
+	};
+
 	class __declspec(dllexport) EngineConfiguration {
 
 	public:
@@ -35,10 +58,14 @@ namespace azr {
 		inline void setResolution(azr::EngineResolution resolution) { _resolution = resolution; };
 		inline azr::EngineResolution getResolution() { return _resolution; };
 
+		inline void setClearColor(azr::Color clearColor) { _clearColor = clearColor; };
+		inline azr::Color getClearColor() { return _clearColor; };
+
 	private:
 		int _fps;
 		std::string _title;
 		azr::EngineResolution _resolution;
+		azr::Color _clearColor;
 
 	};
 
