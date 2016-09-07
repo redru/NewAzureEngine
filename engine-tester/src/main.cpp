@@ -7,7 +7,7 @@ int main() {
 	configuration.setFps(60);
 	configuration.setTitle("AZURE ENGINE TEST");
 	configuration.setResolution(azr::EngineResolution(1280, 720));
-	configuration.setClearColor(azr::Color(0x00, 0xFF, 0x00, 0xFF));
+	configuration.setClearColor(azr::Color(0x00, 0x00, 0xFF, 0xFF));
 
 	azr::Engine& engine(azr::Engine::getInstance());
 

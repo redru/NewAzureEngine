@@ -4,6 +4,7 @@
 #include <thread>
 #include <chrono>
 
+#include "StringUtils.h"
 #include "EngineEntities.h"
 #include "Console.h"
 #include "GraphicsModule.h"

@@ -33,11 +33,12 @@ namespace azr {
 
 		void setColor(int red, int green, int blue, int alpha);
 		unsigned int getColor(int color);
+		float getColorUnit(int color);
 
-		/*static const int RED;
-		static const int GREEN;
-		static const int BLUE;
-		static const int ALPHA;*/
+		static const unsigned int RED;
+		static const unsigned int GREEN;
+		static const unsigned int BLUE;
+		static const unsigned int ALPHA;
 
 	private:
 		unsigned int _rgba;
