@@ -51,9 +51,9 @@ void azr::GraphicsModule::shutdown() {
 	_exit = true;
 }
 
-int azr::GraphicsModule::run() {
+void azr::GraphicsModule::run() {
 	if (_running)
-		return 1;
+		return;
 
 	_running = true;
 
@@ -80,8 +80,6 @@ int azr::GraphicsModule::run() {
 	_opened = false;
 	_running = false;
 	glfwTerminate();
-
-	return 0;
 }
 
 void azr::GraphicsModule::changeBackgroundColor(int red, int green, int blue, int alpha) {

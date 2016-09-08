@@ -9,6 +9,13 @@ void azr::StringUtils::split(const string &s, char delim, vector<string> &elems)
 	}
 }
 
+void azr::StringUtils::readFile(std::string path, std::string& target) {
+	std::ifstream t(path);
+	std::stringstream buffer;
+	buffer << t.rdbuf();
+	target = buffer.str();
+}
+
 vector<string> azr::StringUtils::split(const string &s, char delim) {
 	vector<string> elems;
 	azr::StringUtils::split(s, delim, elems);

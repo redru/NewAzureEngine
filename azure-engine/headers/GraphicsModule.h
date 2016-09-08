@@ -26,7 +26,7 @@ namespace azr {
 		void shutdown();
 
 		/* Graphics loop */
-		int run();
+		void run();
 
 		/* Function that changes background color */
 		void changeBackgroundColor(int red, int green, int blue, int alpha);
@@ -40,7 +40,7 @@ namespace azr {
 		void _refreshModule();
 
 	public:
-		inline void setConfiguration(azr::EngineConfiguration& configuration) { _configuration = configuration; };
+		inline void setConfiguration(azr::EngineConfiguration configuration) { _configuration = configuration; };
 		inline azr::EngineConfiguration& getConfiguration() { return _configuration; };
 
 		inline void setPause(bool& pause) { _pause = pause; };

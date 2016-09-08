@@ -3,6 +3,7 @@
 #include <iostream>
 #include <thread>
 #include <chrono>
+#include <vector>
 
 #include "StringUtils.h"
 #include "EngineEntities.h"
@@ -24,13 +25,20 @@ namespace azr {
 
 	private:
 		// Private constructor for singleton
-		azr::Engine() : _configuration(), _graphics() { };
+		azr::Engine() : _configuration(), v_graphics(10), _exit(false) { };
+
+		std::vector<azr::GraphicsModule>::iterator _currentWindow;
+		bool _exit;
+
+		std::thread startWindow();
+		std::thread startGameplay();
+		std::thread startCommand();
 
 		// Engine configuration object
 		azr::EngineConfiguration _configuration;
 
 		// TMP
-		azr::GraphicsModule _graphics;
+		std::vector<azr::GraphicsModule> v_graphics;
 
 	public:
 		inline void setConfiguration(azr::EngineConfiguration&& configuration) { _configuration = configuration; };
